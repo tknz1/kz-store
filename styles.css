@@ -1,0 +1,2316 @@
+.popup-overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.popup-content {
+    background: var(--card-bg);
+    padding: 20px;
+    border-radius: 12px;
+    max-width: 500px;
+    width: 90%;
+    position: relative;
+    text-align: center;
+    color: var(--text-light);
+    transform: scale(0.5) translateY(50px);
+    opacity: 0;
+    box-shadow: none;
+    will-change: transform, opacity, box-shadow; 
+}
+.popup-content.show {
+    animation: emergeAndFloat 1.2s ease-out forwards, float 2.5s ease-in-out infinite alternate;
+}
+
+.popup-content.hide {
+    animation: fadeAndSink 0.6s ease-in forwards;
+}
+
+@keyframes emergeAndFloat {
+    0% {
+        transform: scale(0.5) translateY(50px);
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(139, 92, 246, 0);
+    }
+    50% {
+        transform: scale(1.1) translateY(-10px);
+        opacity: 0.8;
+        box-shadow: 0 15px 40px rgba(139, 92, 246, 0.6);
+    }
+    100% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+    }
+}
+
+@keyframes float {
+    0% {
+        transform: translateY(0);
+    }
+    100% {
+        transform: translateY(-5px);
+    }
+}
+
+@keyframes fadeAndSink {
+    0% {
+        transform: scale(1) translateY(0);
+        opacity: 1;
+        box-shadow: 0 8px 20px rgba(139, 92, 246, 0.4);
+    }
+    100% {
+        transform: scale(0.5) translateY(50px);
+        opacity: 0;
+        box-shadow: 0 0 0 rgba(139, 92, 246, 0);
+    }
+}
+
+.popup-content h2 {
+    font-family: 'Montserrat', sans-serif;
+    margin-bottom: 15px;
+    color: var(--accent-neon);
+}
+
+.popup-content p {
+    font-size: 1em;
+    line-height: 1.5;
+}
+
+.popup-close {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    font-size: 1.5em;
+    color: var(--text-light);
+    cursor: pointer;
+    transition: color 0.3s;
+}
+
+.popup-close:hover {
+    color: var(--accent-neon);
+}
+
+
+.scroll-to-top {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: var(--accent-neon);
+    color: var(--text-light);
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5em;
+    cursor: pointer;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.4);
+    z-index: 1000;
+    will-change: opacity, transform; 
+}
+
+.scroll-to-top.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+.scroll-to-top:hover {
+    background: var(--primary-navy);
+    transform: translateY(-2px);
+}
+.social-links a i {
+    margin-right: 8px;
+    font-size: 1.2em;
+    vertical-align: middle;
+    transition: color 0.3s;
+}
+
+.social-links a:hover i {
+    color: var(--accent-neon);
+}
+/*
+ * Override the base colour palette to more closely match the look and feel
+ * of the public "react‑game‑store" demo.  That site uses a very dark
+ * background with subtle blue/grey panels and a vibrant purple accent.  The
+ * following variables update our existing navy/teal palette to deeper
+ * midnight tones and introduce a richer violet accent.  Tweaking only the
+ * CSS custom properties allows the rest of the site layout and animations
+ * to stay intact while giving the whole page a new coat of paint.
+ */
+:root {
+    /* Updated theme colours inspired by the provided reference UI.
+       The new palette leans into rich blacks and inky blues for
+       backgrounds with a vibrant violet accent.  Text colours have
+       been brightened for better contrast on the darker surfaces. */
+
+    /* Core backgrounds: deep blacks and charcoal blues */
+    --primary-navy: #0e1118;        /* page background (almost black) */
+    --secondary-dark: #181e2a;      /* panels and filter containers */
+    --card-bg: #212a3b;             /* cards and dropdown surfaces */
+    /* A subtle gradient adds depth without drawing attention */
+    --gradient-bg: linear-gradient(135deg, #0e1118 0%, #181e2a 100%);
+
+    /* Accent colours: saturated violet for highlights */
+    --accent-neon: #8f4bf0;         /* primary highlight (links, sliders, borders) */
+    --accent-light: #a371f7;        /* lighter variant for hover states and subtle glow */
+
+    /* Typography: crisp off‑white on dark backgrounds */
+    --text-light: #e6eaf3;          /* main copy colour */
+    --text-muted: #9aa3b4;          /* muted descriptions and placeholders */
+}
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    -webkit-tap-highlight-color: transparent;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background: var(--gradient-bg);
+    color: var(--text-light);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased; 
+    -moz-osx-font-smoothing: grayscale; 
+
+    /* Prevent horizontal scrolling.  Some layouts (e.g. the hero section
+       or wide filters) previously caused the page to exceed the viewport
+       width on small screens, exposing the gradient background off the
+       edges.  Hiding horizontal overflow keeps the background confined
+       within the visible screen area. */
+    overflow-x: hidden;
+}
+
+.container {
+    width: 100%; 
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    padding: 0px 0;
+    text-align: center;
+    box-shadow: none;
+    position: relative;
+    overflow: hidden;
+}
+.social-links {
+    margin-top: -20px;
+}
+
+.social-links a {   
+    color: var(--text-light); 
+    margin: 0 30px;
+    text-decoration: none;
+    font-size: 1.1em;
+    transition: color 0.3s;
+}
+
+.social-links a:hover {
+    color: var(--accent-neon);
+}
+
+.filters {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    margin: 30px 0;
+    background: var(--secondary-dark);
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
+    position: relative;
+    transition: all 0.5s ease-in-out; 
+
+}
+
+.filters.hidden {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+}
+
+.filter-buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: nowrap;
+    width: 100%;
+    padding: 10px 0;
+    position: relative; 
+}
+
+
+.filter-buttons::-webkit-scrollbar {
+    height: 8px;
+}
+
+.filter-buttons::-webkit-scrollbar-thumb {
+    background: var(--accent-neon);
+    border-radius: 4px;
+}
+
+.filter-buttons::-webkit-scrollbar-track {
+    background: var(--secondary-dark);
+}
+
+.filters button {
+    padding: 12px 20px;
+    font-size: 1em;
+    background-color: var(--card-bg);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Poppins', sans-serif;
+    white-space: nowrap;
+    touch-action: manipulation; 
+    will-change: background-color, transform, box-shadow; 
+}
+
+.filters button:hover {
+    background-color: var(--accent-neon);
+    transform: translateY(-2px) scale(1.02); 
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.4);
+}
+
+.filters button.active {
+    background-color: var(--accent-neon);
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.4);
+}
+
+.dropdown {
+    position: relative;
+    display: inline-block;
+}
+.dropdown-button {
+    padding: 12px 20px;
+    font-size: 1em;
+    background-color: var(--card-bg); 
+    color: var(--text-light); 
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+    touch-action: manipulation; 
+    will-change: background-color, transform, box-shadow; 
+}
+.dropdown-button:hover {
+    background-color: var(--accent-neon); 
+    transform: translateY(-2px) scale(1.02); 
+    box-shadow: 0 4px 10px rgba(139, 92, 246, 0.4); 
+}
+.dropdown-content {
+    display: none; 
+    position: absolute;
+    background-color: var(--secondary-dark);
+    min-width: 180px;
+    box-shadow: 0 8px 20px rgba(0,0,0,0.3);
+    border-radius: 8px;
+    top: calc(100% + 10px); 
+    left: 0;
+    z-index: 9999; 
+    opacity: 0; 
+    transform: translateY(-10px) scaleY(0.9); 
+    transform-origin: top;
+    transition: opacity 0.3s ease-out, transform 0.3s ease-out; 
+    padding: 5px;
+    will-change: opacity, transform; 
+}
+.dropdown.active .dropdown-content {
+    display: block; 
+    opacity: 1; 
+    transform: translateY(0) scaleY(1); 
+}
+
+
+.dropdown-content button {
+    width: 100%;
+    text-align: left;
+    padding: 12px 16px;
+    background: none;
+    color: var(--text-light);
+    border: none;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, color 0.3s; 
+    border-radius: 6px;
+    margin: 2px 0; 
+    touch-action: manipulation; 
+}
+.dropdown-content button:hover {
+    background-color: var(--accent-neon); 
+    color: var(--primary-navy); 
+}
+
+.price-filter label {
+    font-size: 1em;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    font-family: 'Poppins', sans-serif;
+}
+
+.price-filter input[type="checkbox"] {
+    accent-color: var(--accent-neon);
+    cursor: pointer;
+    touch-action: manipulation;
+}
+
+.price-filter input[type="range"] {
+    -webkit-appearance: none;
+    width: 100%;
+    height: 8px; 
+    background: var(--card-bg); 
+    border-radius: 5px;
+    outline: none;
+    opacity: 0.9;
+    transition: opacity .2s;
+    touch-action: manipulation; 
+}
+
+.price-filter input[type="range"]::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 20px; 
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-neon);
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.6);
+    touch-action: manipulation;
+}
+
+.price-filter input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-neon);
+    cursor: pointer;
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.6);
+    touch-action: manipulation; 
+}
+
+.price-filter span {
+    font-size: 0.95em;
+    color: var(--accent-neon);
+    font-weight: bold;
+}
+
+.game-list, .service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr)); 
+    gap: 20px;
+    transition: opacity 0.5s ease-in-out;
+    will-change: opacity; 
+
+}
+.game-list.hidden, .service-list.hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+}
+
+.game-card, .service-card {
+    background-color: var(--card-bg);
+    border-radius: 15px; 
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    position: relative;
+    will-change: transform, box-shadow; 
+}
+.game-card:hover, .service-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.3);
+}
+
+.game-card img, .service-card img {
+    width: 100%;
+    height: 260px; 
+    object-fit: cover;
+    border-bottom: 3px solid var(--accent-neon);
+    transition: transform 0.3s ease;
+    background-color: var(--card-bg);
+    will-change: transform;
+}
+
+
+.game-card:hover img, .service-card:hover img {
+    transform: scale(1.05);
+}
+
+.game-card .content, .service-card .content {
+    padding: 15px;
+    text-align: center;
+}
+
+.game-card h3, .service-card h3 {
+    margin: 10px 0 5px; 
+    font-size: 1.5em;
+    color: var(--text-light);
+    font-family: 'Montserrat', sans-serif;
+    text-shadow: 0 0 5px rgba(139, 92, 246, 0.3);
+}
+
+.game-card .short-description { 
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+    min-height: 20px; 
+}
+
+.game-card .price, .service-card .price {
+    color: var(--accent-neon);
+    font-weight: bold;
+    font-size: 1.6em;
+    margin: 5px 0;
+}
+
+.game-card .genres {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    /* Update the overlay gradient on cards to use the new dark palette. */
+    /* Match the overlay gradient to the updated dark palette */
+    background: linear-gradient(to top, rgba(14, 17, 24, 0.9), rgba(14, 17, 24, 0));
+    color: var(--text-light);
+    padding: 15px 10px 10px; 
+    font-size: 0.9em;
+    text-align: center;
+    opacity: 0;
+    transform: translateY(100%); 
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+    border-bottom-left-radius: 15px;
+    border-bottom-right-radius: 15px;
+    will-change: opacity, transform; 
+}
+
+.game-card:hover .genres {
+    opacity: 1;
+    transform: translateY(0); 
+}
+
+
+@media (max-width: 768px) {
+    .filters {
+        flex-direction: column;
+        align-items: stretch;
+        padding: 15px;
+    }
+
+
+    .filter-buttons {
+        justify-content: flex-start; 
+        overflow-x: auto; 
+    }
+
+    .price-filter {
+        align-items: flex-start;
+    }
+
+    .price-filter input[type="range"] {
+        width: 100%;
+    }
+}
+
+@media (max-width: 600px) {
+    .game-list, .service-list {
+        grid-template-columns: 2fr;
+    }
+
+    header h1 {
+        font-size: 2em;
+    }
+
+    .filters button, .dropdown-button {
+        padding: 10px 15px;
+        font-size: 0.9em;
+    }
+
+    .dropdown-content {
+        min-width: 150px;
+    }
+}
+.search-bar {
+    width: 100%;
+    max-width: 400px;
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.search-bar input {
+    width: 100%;
+    padding: 12px 20px;
+    font-size: 1em;
+    background-color: var(--card-bg);
+    color: var(--text-light);
+    border: none;
+    border-radius: 8px;
+    outline: none;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    font-family: 'Poppins', sans-serif;
+    padding-right: 40px; 
+}
+
+.search-bar input::placeholder {
+    color: var(--text-light);
+    opacity: 0.7;
+}
+
+.search-bar input:focus,
+.search-bar input:hover {
+    background-color: var(--secondary-dark);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(139, 92, 246, 0.4);
+    border: 1px solid var(--accent-neon);
+}
+
+.search-bar .search-icon { 
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: var(--text-muted);
+    font-size: 1.2em;
+    pointer-events: none; 
+}
+
+@media (max-width: 768px) {
+    .search-bar {
+        max-width: 100%;
+    }
+}
+.updating-message {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 40px auto;
+    padding: 13px 30px;
+    /* Match the new dark panel colour instead of hard‑coded navy */
+    background: var(--secondary-dark);
+    color: var(--accent-neon);
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.5em;
+    font-weight: 800;
+    text-transform: uppercase;
+    border-radius: 15px;
+    border: 5px solid var(--accent-neon);
+    box-shadow: 0 6px 15px rgba(139, 92, 246, 0.4);
+    text-shadow: 0 0 8px rgba(139, 92, 246, 0.6);
+    max-width: 400px;
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    will-change: transform, box-shadow;
+}
+
+.updating-message:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(139, 92, 246, 0.6);
+}
+
+.header-container {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    max-width: 1240px;
+    margin: 0 auto;
+    padding: 20px;
+    position: relative;
+    color: var(--text-light); 
+}
+.logo {
+    width: 120px;
+    height: auto;
+    position: absolute;
+    top: -25px;
+    left: 0px;
+    z-index: 10;
+    transition: transform 0.3s ease;
+    will-change: transform; 
+}
+
+.logo {
+    width: 60px;        /* kích thước logo */
+    height: auto;
+    position: static;    /* bỏ absolute để nó theo flex của navbar */
+    margin-right: 20px;  /* tạo khoảng cách với menu */
+    transition: transform 0.3s ease;
+    will-change: transform; 
+}
+
+
+.logo-link {
+    display: block;
+    line-height: 0;
+}
+
+.logo-link:hover .logo {
+    transform: scale(1.05);
+}
+
+
+.header-content {
+    text-align: center;
+    width: 100%;
+}
+
+
+@media (max-width: 768px) {
+    .logo {
+        width: 100px;
+        top: 15px;
+        left: 15px;
+    }
+    .header-container {
+        flex-direction: column;
+        align-items: center;
+        padding-top: 80px; 
+    .social-links {
+        margin-top: 10px; 
+    }
+}
+.social-links a .fa-facebook-f {
+        color: #3a6ad3;
+    }
+    .social-links a .fa-discord {
+        color: #5865F2;
+    }
+   
+    .social-links a:hover i {
+        color: var(--accent-neon); 
+    }
+}
+@media (max-width: 600px) {
+
+    .header-content h1 {
+        font-size: 2.5em;
+    }
+}
+
+
+/*
+ * -------------------------------------------------------------------------
+ * Proportional scaling for smaller screens
+ *
+ * To preserve the original layout on narrow displays (such as laptops
+ * and tablets) we reduce the overall scale of the page rather than
+ * rearranging elements.  Each media query below scales the page
+ * relative to the base design width (~1600px).  The body is scaled
+ * uniformly and the width is increased by the inverse factor so that
+ * the content still fills the viewport without adding horizontal
+ * scrollbars.  Smaller breakpoints appear later in the file so they
+ * override larger ones.
+ */
+
+@media screen and (max-width: 1440px) {
+  body {
+    transform: scale(0.9);
+    transform-origin: top left;
+    width: calc(100% / 0.9);
+  }
+}
+
+@media screen and (max-width: 1366px) {
+  body {
+    transform: scale(0.85);
+    transform-origin: top left;
+    width: calc(100% / 0.85);
+  }
+}
+
+@media screen and (max-width: 1280px) {
+  body {
+    transform: scale(0.8);
+    transform-origin: top left;
+    width: calc(100% / 0.8);
+  }
+}
+
+@media screen and (max-width: 1152px) {
+  body {
+    transform: scale(0.75);
+    transform-origin: top left;
+    width: calc(100% / 0.75);
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  body {
+    transform: scale(0.7);
+    transform-origin: top left;
+    width: calc(100% / 0.7);
+  }
+}
+
+@media screen and (max-width: 900px) {
+  body {
+    transform: scale(0.65);
+    transform-origin: top left;
+    width: calc(100% / 0.65);
+  }
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    transform: scale(0.6);
+    transform-origin: top left;
+    width: calc(100% / 0.6);
+  }
+}
+
+@media screen and (max-width: 640px) {
+  body {
+    transform: scale(0.55);
+    transform-origin: top left;
+    width: calc(100% / 0.55);
+  }
+}
+
+
+.navbar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 2%;
+    /* Reduce the gap between navigation buttons so that more items fit on a
+     * single row.  A smaller gap combined with line wrapping inside the
+     * buttons helps ensure all five navigation items are visible on
+     * typical desktop widths without overflowing. */
+    gap: 60px;
+    flex-wrap: wrap;
+    position: relative;
+    z-index: 20;
+}
+
+.navbar button {
+    background: none; 
+    color: var(--text-light);
+    border: none; 
+    /* Reduce padding and font size to shorten button widths.  Allow
+     * text to wrap across two lines so longer labels like
+     * "Steam Account" and "Spotify Premium" can break neatly and
+     * prevent the navigation from wrapping prematurely.  Center the
+     * text to maintain a balanced look across lines. */
+    padding: 10px 20px;
+    border-radius: 0;
+    font-size: 1.3em;
+    letter-spacing: 1.2px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-family: 'Tilt Neon', sans-serif;
+    white-space: normal;
+    text-align: center;
+    line-height: 1.2;
+    position: relative;
+    overflow: hidden;
+    touch-action: manipulation;
+    will-change: color, transform;
+}
+
+.navbar button::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 3px;
+    background-color: var(--accent-neon); 
+    transform: translateX(-100%); 
+    transition: transform 0.3s ease-out; 
+    will-change: transform;
+}
+
+.navbar button:hover::after,
+.navbar button.active::after {
+    transform: translateX(0); 
+}
+.navbar button:hover {
+    color: var(--accent-neon); 
+    transform: none; 
+    box-shadow: none; 
+}
+
+.navbar button.active {
+    color: var(--accent-neon); 
+    transform: none; 
+    box-shadow: none; 
+}
+
+/* --------------------------------------------------------------------------
+ * Hero Section
+ *
+ * The hero section is a prominent area at the top of the page.  It hosts a
+ * large, auto‑advancing carousel that cycles through a handful of featured
+ * games every 5 seconds.  To the right of the carousel sits a vertical
+ * column of mini cards showcasing six highlighted titles.  The hero is
+ * hidden when a user selects any of the categories (Steam, Netflix,
+ * YouTube or Spotify) and becomes visible again when returning to the
+ * landing page (no category selected).
+ */
+
+/* Container for the entire hero section */
+.hero-section {
+    width: 100%;
+    min-height: 65vh;     /* Chiếm 65% chiều cao màn hình */
+    max-height: 85vh;     /* Không cao quá 85% màn hình */
+    height: 100vh;         /* Luôn giữ đúng tỉ lệ */
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    opacity: 1;
+    transition: opacity 0.5s ease-in-out;
+}
+
+/* Wrapper for the slider and vertical list.  Constrains the width and
+   distributes space evenly between children. */
+.hero-container {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 24px;
+    width: 100%;
+    max-width: 1800px;
+    padding: 0 16px;
+}
+
+/* The large carousel area occupies the majority of the width.  It is
+   positioned relative so that the arrow buttons can be absolutely
+   positioned within it. */
+/*
+ * The hero carousel previously used a fixed min‑height of 770px which caused the
+ * slider to overflow beyond the viewport on smaller devices.  To make the
+ * carousel responsive we define its height relative to the viewport.  A
+ * minimum height ensures the slides remain large enough on larger screens
+ * while a maximum height prevents them from exceeding the available space on
+ * small screens.  The carousel will now fill approximately 60–70% of the
+ * available viewport height and will automatically adjust when the user
+ * resizes the window.
+ */
+.hero-slider {
+    position: relative;
+    flex: 1 1 auto;
+    /* Set the height as a percentage of the viewport to constrain the
+       background within the visible area.  The min/max height guards
+       against extremely short or tall screens. */
+    height: 100vh;
+    min-height: 520px;
+    max-height: 85vh;
+    border-radius: 15px;
+    overflow: hidden;
+    background: var(--secondary-dark);
+    background-size: cover;
+    background-position: center;
+}
+
+/* Reduce the hero carousel height on tablet and mobile screens so that the
+   banner does not dominate the entire page.  These breakpoints lower the
+   percentage‑based height and minimum height, ensuring the hero image
+   remains visible without requiring excessive scrolling. */
+@media (max-width: 1024px) {
+    .hero-slider {
+        height: 55vh;
+        min-height: 300px;
+    }
+}
+@media (max-width: 600px) {
+    .hero-slider {
+        height: 45vh;
+        min-height: 240px;
+    }
+}
+
+/* Container for all slides.  Slides are positioned absolutely on top of
+   each other and transitioned by toggling opacity. */
+.hero-slider .slides {
+    width: 100%;
+    height: 100%;
+    position: relative;
+}
+
+/* A single slide.  Uses background images rather than <img> tags so
+   images cover the available space without distortion.  Each slide starts
+   hidden (opacity: 0) and only the active slide is visible (via the
+   .active class). */
+.hero-slider .slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+}
+
+.hero-slider .slide.active {
+    opacity: 1;
+}
+
+/* Overlay on each slide to display title and description.  A gradient
+   background is used to ensure text remains legible regardless of the
+   underlying image. */
+.hero-slider .slide .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    padding: 25px;
+    /* Use the updated primary background colour in the overlay gradient
+       to ensure a seamless fade into the new dark palette. */
+    background: linear-gradient(to top, rgba(14, 17, 24, 0.9), rgba(14, 17, 24, 0));
+    color: var(--text-light);
+}
+
+.hero-slider .slide .overlay h2 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 2em;
+    margin-bottom: 10px;
+    color: var(--accent-neon);
+}
+
+.hero-slider .slide .overlay p {
+    font-size: 1em;
+    color: var(--text-light);
+}
+
+/* Arrow buttons for navigating the slides.  They float in the middle of the
+   slider and are circular.  A subtle background makes them stand out
+   without obscuring the slide content. */
+.hero-slider button.hero-prev,
+.hero-slider button.hero-next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 5;
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.5);
+    color: var(--text-light);
+    font-size: 1.8em;
+    line-height: 1;
+    cursor: pointer;
+    transition: background 0.3s ease;
+}
+
+.hero-slider button.hero-prev:hover,
+.hero-slider button.hero-next:hover {
+    background: var(--accent-neon);
+}
+
+.hero-slider button.hero-prev {
+    left: 15px;
+}
+.hero-slider button.hero-next {
+    right: 15px;
+}
+
+/* Vertical list of mini cards sits to the right (or below on smaller
+   screens). */
+.vertical-list {
+    display: flex;
+    flex-direction: column;
+    margin-left: 8px;
+    gap: 15px;
+    width: 260px;
+    max-width: 100%;
+    align-self: flex-start;
+}
+
+/* Each mini card is a small row featuring a thumbnail, title and price. */
+.vertical-list .mini-card {
+    display: flex;
+    align-items: center;
+    background: var(--card-bg);
+    border-radius: 12px;
+    padding: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.vertical-list .mini-card:hover {
+    transform: translateX(4px);
+    box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.vertical-list .mini-card img {
+    width: 60px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 8px;
+    flex-shrink: 0;
+}
+
+.vertical-list .mini-info {
+    margin-left: 12px;
+    flex: 1;
+}
+
+.vertical-list .mini-info h4 {
+    font-size: 1em;
+    margin-bottom: 4px;
+    color: var(--accent-neon);
+}
+
+.vertical-list .mini-info p {
+    font-size: 0.8em;
+    color: var(--text-muted);
+    margin: 0;
+}
+
+@media (max-width: 1024px) {
+    /* Stack the slider and the mini list on smaller screens */
+    .hero-container {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .vertical-list {
+        width: 100%;
+        flex-direction: row;
+        overflow-x: auto;
+    }
+    .vertical-list .mini-card {
+        flex-direction: column;
+        align-items: flex-start;
+        min-width: 140px;
+    }
+    .vertical-list .mini-card img {
+        width: 100%;
+        height: 100px;
+        margin-bottom: 8px;
+    }
+    .vertical-list .mini-info {
+        margin-left: 0;
+    }
+}
+@media (max-width: 768px) {
+    .navbar {
+        flex-direction: column; 
+        gap: 10px;
+    }
+    .navbar button {
+        width: 100%; 
+        text-align: center;
+        font-size: 1.2em; 
+        padding: 12px 20px; 
+    }
+}
+.service-card {
+    max-width: 400px;
+}
+
+.service-card img {
+    width: 100%; 
+    height: 300px;
+    object-fit: cover;
+}
+
+.service-card .content {
+    padding: 15px;
+    text-align: center;
+
+}
+
+.service-card .content h3 {
+    font-size: 1.4em; 
+    min-height: 40px; 
+}
+
+.service-card .content .description {
+    font-size: 0.85em; 
+    min-height: 60px; 
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+
+.service-card .price {
+    font-size: 1.4em; 
+}
+/* Override the default service grid to ensure proper multi‑column
+ * layout on wider screens.  Both game and service lists share the
+ * same responsive grid definition.  Without this override the
+ * service lists could collapse into a single column when the filter
+ * sidebar is hidden. */
+.game-list, .service-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 20px;
+}
+
+/* This rule explicitly sets the columns for service lists to match
+ * the general definition above.  It will override any prior
+ * definitions of `.service-list` in the stylesheet. */
+.service-list {
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    gap: 20px;
+}
+.filters.hidden {
+    opacity: 0;
+    height: 0;
+    padding: 0;
+    margin: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out, padding 0.5s ease-in-out, margin 0s.5s ease-in-out;
+}
+.game-list.hidden, .service-list.hidden {
+    opacity: 0;
+    height: 0;
+    overflow: hidden;
+    transition: opacity 0.5s ease-in-out, height 0.5s ease-in-out;
+}
+
+
+/* === NAVBAR BUTTON EFFECTS (underline + hover + active) === */
+.navbar .nav-button {
+    position: relative;
+    background: transparent;
+    border: 0;
+    color: var(--text-light);
+    padding: 10px 14px;
+    font: inherit;
+    cursor: pointer;
+    transition: color .25s ease, transform .25s ease;
+}
+
+.navbar .nav-button::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -6px;
+    height: 2px;
+    width: 0;
+    margin: 0 auto;
+    background: var(--accent-neon);
+    transition: width .28s ease;
+    border-radius: 2px;
+}
+
+.navbar .nav-button:hover {
+    color: var(--accent-neon);
+    transform: translateY(-1px);
+}
+.navbar .nav-button:hover::after {
+    width: 100%;
+}
+
+.navbar .nav-button.active {
+    color: var(--accent-neon);
+    text-shadow: 0 0 8px rgba(127, 90, 240, .45);
+}
+.navbar .nav-button.active::after {
+    width: 100%;
+}
+
+/*
+ * -------------------------------------------------------------------------
+ * Custom navbar layout
+ *
+ * The navigation bar has been redesigned to contain category buttons, a
+ * search bar and social media icons all on the same horizontal line.  A
+ * vertical divider separates the logo from the category list and another
+ * divider separates the search bar from the icons.  The search bar
+ * features a rounded outline with a circular search button styled in the
+ * accent colour.  The social icons take on the text colour by default and
+ * brighten on hover.
+ */
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0; /* spacing is controlled by specific elements */
+    flex-wrap: nowrap;
+    padding: 10px 20px;
+}
+
+/* container for the category buttons */
+.nav-buttons {
+    display: flex;
+    align-items: center;
+    gap: 30px;
+}
+
+/* vertical divider used in the navbar */
+.nav-divider {
+    flex: 0 0 auto;
+    width: 1px;
+    height: 28px;
+    /* Lighten the divider so it sits subtly against the new dark palette */
+    background: rgba(255, 255, 255, 0.1);
+    margin: 0 24px;
+}
+
+/* search bar wrapper */
+.nav-search {
+    display: flex;
+    align-items: center;
+    /* Use the card background for the search container to better blend with
+       the redesigned dark theme.  A softer border adds subtle separation
+       without drawing too much attention. */
+    background: var(--card-bg);
+    border: 1px solid rgba(255, 255, 255, 0.08);
+    border-radius: 9999px;
+    padding: 3px 6px 3px 16px;
+    margin-left: auto;
+}
+
+/* search input inside navbar */
+.nav-search input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: var(--text-light);
+    font-size: 0.9em;
+    min-width: 160px;
+    padding: 8px 4px;
+}
+
+/* circular search button */
+.nav-search .search-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 36px;
+    margin-left: 8px;
+    border-radius: 50%;
+    background: var(--accent-neon);
+    color: var(--primary-navy);
+    font-size: 1.2em;
+    cursor: pointer;
+    transition: background 0.3s ease, transform 0.3s ease;
+}
+
+.nav-search .search-icon:hover {
+    background: var(--accent-light);
+    transform: scale(1.05);
+}
+
+/* social icon container */
+.social-icons {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    margin-left: 24px;
+}
+
+.social-icons a {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-light);
+    font-size: 1.3em;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.social-icons a:hover {
+    color: var(--accent-neon);
+}
+
+/* Override default styles for navigation buttons inside nav-buttons */
+.nav-buttons .nav-button {
+    background: transparent;
+    border: none;
+    color: var(--text-light);
+    font-size: 1em;
+    padding: 8px 12px;
+    cursor: pointer;
+    position: relative;
+    white-space: nowrap;
+    transition: color 0.25s ease, transform 0.25s ease;
+    font-family: 'Tilt Neon', sans-serif;
+}
+
+/* Underline effect for nav-buttons */
+.nav-buttons .nav-button::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -4px;
+    height: 2px;
+    background: var(--accent-neon);
+    width: 0;
+    margin: 0 auto;
+    transition: width 0.28s ease;
+    border-radius: 2px;
+}
+
+.nav-buttons .nav-button:hover {
+    color: var(--accent-neon);
+    transform: translateY(-1px);
+}
+
+.nav-buttons .nav-button:hover::after {
+    width: 100%;
+}
+
+.nav-buttons .nav-button.active {
+    color: var(--accent-neon);
+    text-shadow: 0 0 8px rgba(127, 90, 240, .45);
+}
+
+.nav-buttons .nav-button.active::after {
+    width: 100%;
+}
+
+.content-grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 30px;
+    align-items: flex-start;
+    width: 100%;
+    margin-top: 10px;
+}
+
+.content-grid.with-filters {
+    grid-template-columns: 260px 1fr;
+}
+
+@media (max-width: 1024px) {
+    .content-grid.with-filters {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* Sticky sidebar filter.  When hidden, the filter will be removed from
+ * the grid entirely via `display: none`, preventing an empty 260px
+ * column from occupying space for other categories.  The top offset
+ * has been reduced to move the filters higher on the page.  The
+ * remaining settings are streamlined for a minimal look.
+ */
+.filters {
+    position: sticky;
+    top: 67px;
+    align-self: flex-start;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    width: 260px;
+    margin: 0;
+    padding: 0;
+    background: transparent;
+    border-radius: 0;
+    box-shadow: none;
+    overflow: visible;
+    z-index: 10;
+}
+
+/* Hide the filter completely when not in the Steam category */
+.filters.hidden {
+    display: none !important;
+}
+
+.filter-group {
+    margin-bottom: 24px;
+}
+
+.filter-group .filter-title {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1.1em;
+    font-weight: 600;
+    color: var(--accent-neon);
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.filter-options {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.filter-options label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 0.95em;
+    cursor: pointer;
+    color: var(--text-light);
+    font-family: 'Poppins', sans-serif;
+}
+
+.filter-options input[type="checkbox"] {
+    accent-color: var(--accent-neon);
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* Ensure search bar inside the filters spans full width */
+.filters .search-bar {
+    width: 100%;
+    margin-bottom: 0;
+}
+/* ===== Filter labels + custom checkbox (giống hình mẫu) ===== */
+:root { --check-size: 18px; }
+
+.filters .filter-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  cursor: pointer;
+  /* font giống hình: chữ gọn, đậm vừa */
+  font-family: 'Roboto', 'Poppins', sans-serif;
+  font-weight: 500;
+  font-size: 15px;
+  color: var(--text-light);
+  user-select: none;
+}
+
+/* Ẩn style mặc định, vẽ lại ô vuông */
+.filters .filter-group input[type="checkbox"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: var(--check-size);
+  height: var(--check-size);
+  border: 2px solid rgba(241,245,249,0.35); /* viền mảnh, xám nhạt */
+  border-radius: 3px;                        /* ô vuông bo nhẹ như hình */
+  background: transparent;
+  display: grid;
+  place-content: center;
+  transition: border-color .2s ease, background-color .2s ease, transform .08s;
+  outline: none;
+}
+
+/* Hover: viền sáng hơn */
+.filters .filter-group input[type="checkbox"]:hover {
+  border-color: var(--accent-neon); 
+}
+
+/* Focus: ring mảnh cho accessibility */
+.filters .filter-group input[type="checkbox"]:focus-visible {
+  box-shadow: 0 0 0 2px rgba(127,90,240,0.4);
+  border-color: var(--accent-neon);
+}
+
+/* Trạng thái checked: nền tím + dấu tick */
+.filters .filter-group input[type="checkbox"]:checked {
+  background: var(--accent-neon);
+  border-color: var(--accent-neon);
+}
+
+/* Vẽ dấu ✔ bằng 2 cạnh viền, nghiêng -45deg */
+.filters .filter-group input[type="checkbox"]:checked::after {
+  content: "";
+  width: 8px;
+  height: 4px;
+  /* Use the primary background colour for the tick so it remains
+     visible on the updated accent violet background. */
+  border: 2px solid var(--primary-navy);
+  border-top: 0;
+  border-right: 0;
+  transform: rotate(-45deg);
+}
+
+/* Khoảng cách giữa các dòng như hình */
+.filters .filter-group .options {
+  display: grid;
+  gap: 12px;
+}
+
+/*
+ * -----------------------------------------------------------------------------
+ * Custom price filter slider and card layout adjustments
+ *
+ * These rules refine the behaviour of the redesigned price slider and game
+ * cards.  They ensure both slider handles can be dragged independently by
+ * disabling pointer events on the slider track while leaving the thumbs
+ * interactive.  Additional styles align card content to the left and pin
+ * the price line to the bottom of the card.  The genre text within the
+ * content area is given a muted colour and normal flow positioning.
+ * -----------------------------------------------------------------------------
+ */
+/* Price slider container and overlapping range inputs */
+.price-slider {
+  position: relative;
+  width: 100%;
+  height: 24px;
+  margin: 10px 0;
+}
+.price-slider input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 100%;
+  height: 8px;
+  background: var(--secondary-dark);
+  border-radius: 5px;
+  outline: none;
+  cursor: pointer;
+  position: absolute;
+  top: 0;
+  left: 0;
+  /* Disable pointer events on the entire input so that clicks and
+     drags only register on the thumbs.  Without this, the uppermost
+     range element intercepts pointer events and blocks the lower one. */
+  pointer-events: none;
+}
+.price-slider input[type="range"]:nth-child(1) {
+  /* Ensure the left (minimum) slider thumb is behind the right thumb.  A
+     lower z-index allows the right handle to be clickable even when they
+     overlap. */
+  z-index: 2;
+}
+.price-slider input[type="range"]:nth-child(2) {
+  z-index: 3;
+  /* Hide the track of the upper slider so that only one track is visible.
+     Without this, the upper slider's track covers the lower one and
+     makes the right thumb difficult to see. */
+  background: transparent;
+}
+.price-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent-neon);
+  border: none;
+  box-shadow: 0 0 5px rgba(139, 92, 246, 0.6);
+  cursor: pointer;
+  /* Re-enable pointer events on the thumb so it can be dragged.  The
+     parent range input has pointer-events disabled. */
+  pointer-events: all;
+}
+.price-slider input[type="range"]::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: var(--accent-neon);
+  border: none;
+  box-shadow: 0 0 5px rgba(139, 92, 246, 0.6);
+  cursor: pointer;
+  pointer-events: all;
+}
+/* Disable pointer events on tracks so both thumbs remain clickable when
+   overlapping. */
+.price-slider input[type="range"]::-webkit-slider-runnable-track {
+  pointer-events: none;
+}
+.price-slider input[type="range"]::-moz-range-track {
+  pointer-events: none;
+}
+
+.price-values {
+  font-size: 0.95em;
+  margin-top: 8px;
+  margin-bottom: 12px;
+  color: var(--text-light);
+}
+.price-values span {
+  color: var(--accent-neon);
+  font-weight: bold;
+}
+.apply-price-btn {
+  display: inline-block;
+  padding: 8px 20px;
+  font-size: 0.9em;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--accent-neon);
+  color: var(--primary-navy);
+  cursor: pointer;
+  transition: background-color 0.3s, transform 0.2s, box-shadow 0.3s;
+  font-family: 'Poppins', sans-serif;
+}
+.apply-price-btn:hover {
+  background-color: var(--accent-light);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 10px rgba(139, 92, 246, 0.4);
+}
+
+/*
+ * Game card layout tweaks
+ *
+ * We arrange the entire game card as a vertical flex container so that
+ * the image sits at the top and the textual content stretches to
+ * fill the remaining space.  Within the `.content` wrapper we use
+ * another flex column so that the price can push itself to the
+ * bottom of the card via `margin-top: auto`.  This approach avoids
+ * setting a fixed height on the content, ensuring the card adapts
+ * naturally to its contents while still keeping the price anchored
+ * at the bottom.
+ */
+.game-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+.game-card img {
+  /* Maintain a consistent thumbnail height for all cards */
+  height: 260px;
+  object-fit: cover;
+  width: 100%;
+}
+.game-card .content {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 15px;
+}
+.game-card h3 {
+  text-align: left;
+}
+.game-card .price {
+  text-align: left;
+  margin-top: auto;
+  /* Remove bottom margin so the price sticks to the bottom of the card */
+  margin-bottom: 0;
+}
+.game-card .content .genres {
+  position: static;
+  bottom: unset;
+  left: unset;
+  right: unset;
+  background: none;
+  opacity: 1;
+  transform: none;
+  pointer-events: auto;
+  padding: 0;
+  font-size: 0.85em;
+  color: var(--text-muted);
+  margin: 4px 0 6px;
+  /* Align the genre text to the left instead of centered.  This
+     overrides the earlier centre alignment defined on the base
+     `.game-card .genres` rule. */
+  text-align: left;
+}
+
+/* Hide short and long descriptions for game cards.  The redesign does
+   not show descriptive text on game cards; only service cards use
+   these elements.  Even if the HTML includes them inadvertently, this
+   rule will hide them. */
+.game-card .short-description,
+.game-card .description {
+  display: none;
+}
+.service-card .content,
+.service-card h3,
+.service-card .description,
+.service-card .price,
+.service-card .genres {
+  text-align: left;
+}
+
+/*
+ * --------------------------------------------------------------------
+ * Sticky navigation bar enhancements
+ *
+ * These rules override the default navbar styles defined earlier in the
+ * stylesheet.  By anchoring the selectors to `.container > .navbar` we
+ * ensure higher specificity, so the declarations here take precedence
+ * even in the presence of other `.navbar` definitions or media queries.
+ *
+ * The navbar stretches horizontally to negate the 20px left/right
+ * padding applied on the `.container`, allowing the bottom border to
+ * extend to the full page width.  Only a bottom border is drawn; the
+ * other sides are borderless so the bar appears to merge with the
+ * surrounding layout.  The `shrink` state adjusts the padding and
+ * darkens the background for a subtle sticky effect when scrolling.
+ */
+.container > .navbar {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  padding-top: 0px;
+  padding-bottom:20px;
+  border-top: none;
+  box-shadow: none;
+  border-left: none;
+  border-right: none;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  backdrop-filter: blur(6px);
+  margin-left: -20px;
+  margin-right: -20px;
+  width: calc(100% + 40px);
+  transition: padding 0.35s ease, background-color 0.35s ease, border-bottom-color 0.35s ease, box-shadow 0.35s ease;
+}
+
+.container > .navbar.shrink {
+  padding-top: 10px;
+  padding-bottom: 10px;
+  /* Update shrink navbar backdrop to align with the new dark base colour */
+  background: rgba(14, 17, 24, 0.95);
+  border-bottom-color: rgba(255, 255, 255, 0.18);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.4);
+}
+
+/* Adjust the nav button typography when the navbar changes size.  The
+ * default size is defined here, and a slightly smaller size is applied
+ * when the `shrink` class is present on the navbar. */
+.container > .navbar .nav-button {
+  font-size: 1.3em;
+  transition: font-size 0.35s ease;
+}
+.container > .navbar.shrink .nav-button {
+  font-size: 1.15em;
+}
+
+/* -------------------------------------------------------------------
+ * Mobile navigation and controls
+ *
+ * Introduce an off‑canvas navigation drawer and filter drawer for small
+ * screens.  A circular hamburger button appears in the navbar to
+ * toggle the category drawer.  A separate filter button and search
+ * input live just below the navbar when viewing the Steam category.
+ * These components mirror the style of the existing desktop filter
+ * button and search bar.  On larger screens, the drawers and mobile
+ * controls are hidden.
+ */
+
+/* Base styling for the hamburger toggle */
+.menu-toggle {
+  display: none; /* show only on mobile via media query */
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--card-bg);
+  color: var(--text-light);
+  font-size: 1.4em;
+  cursor: pointer;
+  /* flex alignment is set within the mobile breakpoint */
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.menu-toggle:hover {
+  background: var(--accent-neon);
+  color: var(--primary-navy);
+  transform: scale(1.05);
+}
+
+/* Base styling for the mobile controls wrapper */
+.mobile-controls {
+  display: none;
+  align-items: center;
+  gap: 12px;
+  margin-top: 10px;
+  padding: 0 20px;
+}
+
+/* Mobile filter toggle button */
+.filter-toggle {
+  width: 44px;
+  height: 44px;
+  border: none;
+  border-radius: 50%;
+  background: var(--card-bg);
+  color: var(--text-light);
+  font-size: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.filter-toggle:hover {
+  background: var(--accent-neon);
+  color: var(--primary-navy);
+  transform: scale(1.05);
+}
+
+/* Mobile search container */
+.mobile-search {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  background: var(--card-bg);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 9999px;
+  padding: 3px 6px 3px 16px;
+}
+.mobile-search input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  outline: none;
+  color: var(--text-light);
+  font-size: 0.9em;
+  padding: 8px 4px;
+}
+.mobile-search-icon {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: var(--accent-neon);
+  color: var(--primary-navy);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 8px;
+  font-size: 1.2em;
+  cursor: pointer;
+  transition: background 0.3s ease, transform 0.3s ease;
+}
+.mobile-search-icon:hover {
+  background: var(--accent-light);
+  transform: scale(1.05);
+}
+
+/* Overlays for off‑canvas drawers */
+.menu-overlay,
+.filter-overlay {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.6);
+  z-index: 49;
+}
+.menu-overlay.active,
+.filter-overlay.active {
+  display: block;
+}
+
+/* -------------------------------------------------------------------
+ * Mobile fixes for price slider and menu button
+ *
+ * On smaller screens the dual‑range price filter was reported to hide
+ * the left thumb behind the slider track.  This happens because both
+ * range inputs stack on top of each other and the track of the top
+ * slider obscures the lower thumb.  The following overrides ensure
+ * that only the thumbs receive pointer events and that the upper
+ * slider’s track remains transparent on mobile, preserving the
+ * visibility and interactivity of both thumbs.  In addition, the
+ * hamburger menu toggle is forced to remain visible on all category
+ * pages by explicitly displaying it at mobile widths.  Without this
+ * rule the base `.menu-toggle` declaration (which hides the button by
+ * default) would prevent it from rendering once the user navigates
+ * away from the Home tab.
+ */
+@media (max-width: 768px) {
+  /* Ensure the range inputs themselves do not intercept clicks
+     or drags.  Only the thumb handles should be interactive. */
+  .price-slider input[type="range"] {
+    pointer-events: none;
+  }
+  /* Restore pointer events on thumbs and lift them above the track. */
+  .price-slider input[type="range"]::-webkit-slider-thumb,
+  .price-slider input[type="range"]::-moz-range-thumb {
+    pointer-events: all;
+    position: relative;
+    z-index: 2;
+  }
+  /* Keep the track of the second (max) slider transparent so the
+     underlying track is visible and doesn’t cover the lower thumb. */
+    .price-slider input[type="range"]:nth-child(2) {
+    z-index: 3;
+  /* Hide the track of the upper slider so that only one track is visible.
+     Without this, the upper slider's track covers the lower one and
+     makes the right thumb difficult to see. */
+    background: transparent;
+
+    }
+  /*
+   * Elevate the minimum (left) thumb above the second slider’s track on
+   * mobile.  Without a higher z-index the first range element can be
+   * obscured by the upper track, making the thumb appear hidden when
+   * the ranges overlap.  Increasing its z-index ensures both thumbs
+   * remain visible and interactive across all price values.
+   */
+    .price-slider input[type="range"]:nth-child(1) {
+
+    z-index: 3;
+    }
+  /* Always show the hamburger toggle on mobile, regardless of
+     selected category.  The base `.menu-toggle` rule hides the
+     button by default; overriding it here ensures the menu icon
+     remains visible after leaving the Home tab. */
+  .menu-toggle {
+    display: inline-flex;
+  }
+
+  /*
+   * Explicitly position the mobile menu button so it stays visible on
+   * every category page.  When navigating away from the landing
+   * section the menu button was previously hidden behind other
+   * elements or not rendered at all.  Fix it by pinning the toggle
+   * to the top-left corner with a high z-index and reapplying its
+   * dimensions.  The `!important` flag on `display` prevents other
+   * declarations from hiding the button inadvertently.
+   */
+  #menuToggle {
+    display: inline-flex !important;
+    position: fixed;
+    top: 35px;
+    left: 35px;
+    width: 56px;
+    height: 56px;
+    aspect-ratio: 1 / 1;
+    align-items: center;
+    justify-content: center;
+    z-index: 1001;
+  }
+}
+
+@media (max-width: 768px) {
+  /* Make the main navbar non‑sticky on mobile to avoid covering content */
+  .container > .navbar {
+    position: relative;
+    top: auto;
+    margin-left: 0;
+    margin-right: 0;
+    width: 100%;
+    border-bottom: none;
+    backdrop-filter: none;
+  }
+  .container > .navbar.shrink {
+    background: none;
+    box-shadow: none;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  /* Layout adjustments: center the logo, position social icons and menu toggle */
+  .navbar {
+    justify-content: center;
+    position: relative;
+    padding: 10px 20px;
+  }
+  .navbar .logo-link {
+    margin: 0 auto;
+  }
+  /* Ưu tiên cao hơn: button.menu-toggle bên trong .navbar */
+  .navbar button.menu-toggle {
+    /* KHÓA hình tròn */
+    width: 56px;
+    height: 56px;
+    aspect-ratio: 1 / 1;
+    padding: 0 !important;        /* chặn padding thừa làm méo */
+    box-sizing: border-box;
+    border-radius: 50% !important; /* ép tròn */
+    line-height: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2em;
+
+    /* vị trí (tuỳ bạn): góc trái trên */
+    position: fixed;
+    inset: 3% auto auto 8%;   /* top:12px; left:12px; */
+    z-index: 100;
+
+    /* vòng viền */
+    box-shadow: 0 0 0 2px var(--accent-neon);
+}
+
+  .navbar .social-icons {
+    position: absolute;
+    right: 30px;
+    font-size: 1.8em;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+  /* Hide inline navbar search and dividers on mobile */
+  .navbar .nav-search,
+  .navbar .nav-divider {
+    display: none;
+  }
+  /* Convert category buttons into an off‑canvas drawer */
+  .nav-buttons {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 75%;
+    max-width: 300px;
+    height: 100%;
+    font-size: 1.4em;
+    background: var(--secondary-dark);
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 80px 20px 20px;
+    gap: 40px;
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+  }
+  .nav-buttons.open {
+    transform: translateX(0);
+  }
+  .nav-buttons .nav-button {
+    width: 100%;
+    text-align: left;
+    font-size: 1.1em;
+    padding: 12px 16px;
+  }
+  /* Override filters to act as a right drawer */
+  .filters {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 80%;
+    max-width: 340px;
+    height: 100%;
+    background: var(--secondary-dark);
+    padding: 80px 20px 20px;
+    transform: translateX(100%);
+    transition: transform 0.3s ease;
+    z-index: 50;
+    overflow-y: auto;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.4);
+  }
+    /* Cỡ chữ tiêu đề filter, ví dụ "Thể loại", "Loại account", ... */
+  .filters .filter-group .filter-title {
+    font-size: 2em; /* nhỏ hơn một chút */
+  }
+
+  /* Cỡ chữ từng tùy chọn checkbox */
+  .filters .filter-group label {
+    font-size: 25px;
+  }
+  .filters.open {
+    transform: translateX(0);
+  }
+  .filters .filter-group {
+    width: 100%;
+  }
+  .filters .apply-price-btn {
+    width: 100%;
+    margin-top: 12px;
+  }
+  /* Ensure content grid uses single column; drawers overlay content */
+  .content-grid,
+  .content-grid.with-filters {
+    grid-template-columns: 1fr;
+  }
+  /* Use two columns for game cards on small screens */
+  .game-list {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 16px;
+  }
+  /* Limit game titles to two lines and adjust price alignment */
+  .game-card h3 {
+    font-size: 1.4em;
+    line-height: 1.3;
+    display: -webkit-box;
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .game-card .price {
+    font-size: 1.7em;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .game-card .price .currency {
+    font-size: inherit;
+  }
+  
+  /* Increase base font size for mobile for readability */
+  body {
+    font-size: 15px;
+  }
+  .navbar .nav-button {
+    padding: 10px 12px;
+  }
+}
+
+/* Hide mobile controls on screens wider than 768px regardless of inline styles */
+@media (min-width: 769px) {
+  #mobileControls {
+    display: none !important;
+  }
+}
+@media (max-width: 768px) {
+  :root {
+    --check-size: 30px; /* hoặc nhỏ hơn tùy ý */
+  }
+    .price-values {
+    font-size: 1.8em; /* nhỏ hơn để gọn */
+  }
+  .price-values span {
+    font-size: 0.9em; /* có thể chỉnh riêng số tiền */
+  }
+    .price-slider input[type="range"] {
+    height: 15px;
+  }
+
+  /* Nút tròn slider nhỏ hơn */
+  .price-slider input[type="range"]::-webkit-slider-thumb {
+    width: 25px;
+    height: 25px;
+    position: relative;
+    z-index: 2;
+  }
+  .price-slider input[type="range"]::-moz-range-thumb {
+    width: 25px;
+    height: 25px;
+    z-index: 3;
+  }
+}
+@media (max-width: 768px) {
+  /* Track rõ hơn trên nền filter */
+  .price-slider input[type="range"] {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 100%;
+    height: 10px;                 /* dày hơn chút cho dễ thấy */
+    background: var(--card-bg);   /* đổi khác --secondary-dark để nổi bật */
+    border-radius: 9999px;
+    outline: none;
+  }
+
+  /* Track – Chrome/Safari/Edge */
+  .price-slider input[type="range"]::-webkit-slider-runnable-track {
+    height: 10px;
+    background: var(--card-bg);
+    border-radius: 9999px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+  }
+
+  /* Track – Firefox */
+  .price-slider input[type="range"]::-moz-range-track {
+    height: 10px;
+    background: var(--card-bg);
+    border-radius: 9999px;
+    box-shadow: inset 0 0 0 1px rgba(255,255,255,0.08);
+  }
+
+  /* Thumb căn giữa track (thumb 20px, track 10px → margin-top = -(20-10)/2 = -5px) */
+  .price-slider input[type="range"]::-webkit-slider-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-neon);
+    border: none;
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.6);
+    margin-top: -5px;
+  }
+  .price-slider input[type="range"]::-moz-range-thumb {
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: var(--accent-neon);
+    border: none;
+    box-shadow: 0 0 5px rgba(139, 92, 246, 0.6);
+  }
+}
+@media (max-width: 768px) {
+  .hero-container {
+    flex-direction: column;         /* đảm bảo xếp theo cột */
+    align-items: stretch;
+  }
+
+  .vertical-list {
+    width: 100%;
+    margin-left: 0;
+    flex-direction: column;         /* từ hàng ngang -> cột dọc */
+    overflow: visible;              /* bỏ kéo ngang */
+    gap: 12px;
+  }
+
+  .vertical-list .mini-card {
+    width: 100%;                    /* mỗi card chiếm 1 hàng */
+    min-width: 100%;                /* chống co lại khi có rule cũ */
+    flex-direction: row;            /* thumbnail trái, text phải */
+    align-items: center;
+  }
+
+  .vertical-list .mini-card img {
+    width: 30%;
+    height: 30%;
+  }
+
+  .vertical-list .mini-info {
+    margin-left: 12px;
+  }
+}
+@media (max-width: 600px) {
+  /* LƯỚI: service 2 cột như mục (1) */
+  .service-list { grid-template-columns: repeat(2, 1fr); }
+
+  /* KÍCH THƯỚC: đồng bộ service-card với game-card */
+  .service-card {
+    max-width: none;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+  }
+  .service-card img {           /* giống game-card: 260px */
+    height: 260px;
+    object-fit: cover;
+    width: 100%;
+  }
+  .service-card .content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    text-align: left;           /* đồng nhất căn lề */
+    padding: 15px;
+  }
+  .service-card h3 {
+    font-size: 1em;             /* thu nhỏ như mobile của game-card */
+    line-height: 1.25;
+    display: -webkit-box;       /* 2 dòng, tránh tràn */
+    -webkit-line-clamp: 2;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+  }
+  .service-card .price {
+    font-size: 1em;             /* đồng bộ size giá */
+    margin-top: auto;           /* luôn dính đáy thẻ */
+    text-align: left;
+  }
+}
+@media (max-width: 768px) {
+  .filters {
+    position: fixed;
+    top: 0;
+    /* đổi từ right: 0; -> left: 0; */
+    left: 0;
+    width: 80%;
+    max-width: 340px;
+    height: 100%;
+    background: var(--secondary-dark);
+    padding: 80px 20px 20px;
+    /* đổi từ translateX(100%) -> translateX(-100%) để ẩn ra ngoài bên trái */
+    transform: translateX(-100%);
+    transition: transform 0.3s ease;
+    z-index: 50;
+    overflow-y: auto;
+    /* đổi bóng từ -2px (bên phải) -> 2px (bên trái) */
+    box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
+  }
+
+  /* giữ nguyên: khi mở thì trượt vào */
+  .filters.open {
+    transform: translateX(0);
+  }
+}
