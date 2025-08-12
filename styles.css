@@ -2018,13 +2018,9 @@ header {
     align-items: center;
     justify-content: center;
     font-size: 2em;
-
-    /* vị trí (tuỳ bạn): góc trái trên */
     position: fixed;
-    inset: 3% auto auto 8%;   /* top:12px; left:12px; */
+    inset: 3% auto auto 8%;   
     z-index: 100;
-
-    /* vòng viền */
     box-shadow: 0 0 0 2px var(--accent-neon);
 }
 
@@ -2047,7 +2043,7 @@ header {
     left: 0;
     width: 75%;
     max-width: 300px;
-    height: 100%;
+    height: 1600px;
     font-size: 1.4em;
     background: var(--secondary-dark);
     flex-direction: column;
@@ -2056,7 +2052,7 @@ header {
     gap: 40px;
     transform: translateX(-100%);
     transition: transform 0.3s ease;
-    z-index: 1000;
+    z-index: 10000;
     overflow-y: auto;
     box-shadow: 2px 0 10px rgba(0, 0, 0, 0.4);
   }
