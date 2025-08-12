@@ -513,10 +513,10 @@ function initHeroSection() {
     const verticalList = document.getElementById('verticalList');
 
     const featuredSlides = [
-        { title: 'Mafia: The Old Country ',       description: 'Cuộc nổi dậy mafia Sicilia, đầy kích tính',  image: 'images/hero1.jpg' },
-        { title: 'Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles 2',      description: 'Chiến hành dynamic, 40+ nhân vật, kể thêm nhiều arc mới',        image: 'images/hero2.jpg' },
-        { title: 'WUCHANG Fallen Feathers',        description: 'Soulslike tối tăm, nữ hải tặc chiến bệnh bí ẩn',   image: 'images/hero3.jpg' },
-        { title: 'Black Myth: Wukong',        description: 'Phiêu lưu hành động thần thoại, hóa thân Tề Thiên Đại Thánh.',   image: 'images/hero4.jpg' }
+        { title: 'Mafia: The Old Country ',       description: 'Cuộc nổi dậy mafia Sicilia, đầy kích tính',  image: 'images/hero1.png' },
+        { title: 'Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles 2',      description: 'Chiến hành dynamic, 40+ nhân vật, kể thêm nhiều arc mới',image: 'images/hero2.png' },
+        { title: 'WUCHANG Fallen Feathers',        description: 'Soulslike tối tăm, nữ hải tặc chiến bệnh bí ẩn',   image: 'images/hero3.png' },
+        { title: 'Black Myth: Wukong',        description: 'Phiêu lưu hành động thần thoại, hóa thân Tề Thiên Đại Thánh.',   image: 'images/hero4.png' }
     ];
 
     // Build the slide elements
