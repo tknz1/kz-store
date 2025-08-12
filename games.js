@@ -226,7 +226,7 @@ const games = [
     {
         "name": "F1 25 Iconic Edition",
         "genres": ["Đua xe", "Mô phỏng", "Thể thao", "Account OFFLINE"],
-        "price": "79.000",
+        "price": "69.000",
         "image": "images/f125.jpg",
         "isHot": false
     },
