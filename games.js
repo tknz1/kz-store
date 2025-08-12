@@ -98,7 +98,7 @@ const games = [
         "isHot": false
     },
     {
-        "name": "Sid-Meiers-Civilization®-VII.jpg",
+        "name": "Sid Meiers Civilization® VII",
         "genres": ["Chiến thuật", "Account OFFLINE"],
         "price": "49.000",
         "image": "images/Sid-Meiers-Civilization®-VII.jpg",
