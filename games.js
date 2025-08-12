@@ -9,7 +9,7 @@ const games = [
     {
         "name": "Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles 2",
         "genres": ["Game anime", "Hành động", "Nhập Vai", "Account OFFLINE"],
-        "price": "69.000",
+        "price": "79.000",
         "image": "images/demonslayer2.jpg",
         "isHot": true
     },
@@ -212,7 +212,7 @@ const games = [
     {
         "name": "Wuchang: Fallen Feathers",
         "genres": ["Nhập vai", "Hành động", "Phiêu lưu", "Cốt truyện", "Account OFFLINE"],
-        "price": "69.000",
+        "price": "49.000",
         "image": "images/wuchang.jpg",
         "isHot": true
     },
@@ -703,7 +703,7 @@ const games = [
     {
         name: "Horizon Zero Dawn Complete Edition",
         genres: ["Nhập vai", "Phiêu lưu", "Hành động","Cốt truyện", "Account OFFLINE"],
-        price: "49.000",
+        price: "59.000",
         image: "images/horizonzerodawn.jpg",
         isHot: true
     },
@@ -759,7 +759,7 @@ const games = [
     {
         name: "Kingdom Come: Deliverance II",
         genres: ["Nhập vai", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
-        price: "49.000",
+        price: "59.000",
         image: "images/kingdomcome2.jpg",
         isHot: true
     },
@@ -1362,7 +1362,7 @@ const games = [
     {
         name: "UNCHARTED: Legacy of Thieves Collection" ,
         genres: ["Hành Động",'Phiêu Lưu',"Cốt truyện", "Account OFFLINE"],
-        price: "49.000",
+        price: "59.000",
         image: "images/uncharted4lotc.jpg",
         isHot: true
     },
