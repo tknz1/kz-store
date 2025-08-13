@@ -673,9 +673,9 @@ const games = [
         isHot: true
     },
     {
-        name: "Monster Hunter Wilds",
+        name: "Monster Hunter Wilds Deluxe Edtiton",
         genres: ["Hành động", "Nhập vai","Cốt truyện", "Account OFFLINE"],
-        price: "49.000",
+        price: "59.000",
         image: "images/monsterhunterwild.jpg",
         isHot: true
     },
