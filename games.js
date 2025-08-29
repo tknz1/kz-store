@@ -1,22 +1,99 @@
 const games = [
     {
-        "name": "Mafia: The Old Country",
+        "name": "METAL GEAR SOLID Δ: SNAKE EATER Digital Deluxe",
+        "genres": ["Hành động", "Phiêu lưu", "Account OFFLINE"],
+        "price": "69.000",
+        "image": "images/METALGEARSOLIDΔ.jpg",
+        "isHot": true
+    },         
+    {
+        "name": "Lost Soul Aside Deluxe Edition",
         "genres": ["Nhập vai", "Hành động", "Cốt truyện", "Account OFFLINE"],
         "price": "69.000",
+        "image": "images/lost-soul-aside-deluxe-edition.jpg",
+        "isHot": true
+    },
+    {
+        "name": "SILENT HILL f Deluxe Edition",
+        "genres": ["Kinh dị", "Sinh tồn", "Phiêu lưu", "Account OFFLINE"],
+        "price": "59.000",
+        "image": "images/SILENT-HILL-f.jpg",
+        "isHot": false
+    },
+    {
+        "name": "DARK SOULS III Full DLC",
+        "genres": ["Nhập vai", "Hành động", "Account OFFLINE"],
+        "price": "49.000",
+        "image": "images/DARK-SOULS-III-Deluxe-Edition-1000x563.jpg",
+        "isHot": false
+    },
+    {
+        "name": "DARK SOULS II: Scholar of the First Sin",
+        "genres": ["Nhập vai", "Hành động", "Account OFFLINE"],
+        "price": "39.000",
+        "image": "images/DARK-SOULS-II-Scholar-of-the-First-Sin-1000x563.jpg",
+        "isHot": false
+    },
+    {
+        "name": "Hades 1 + 2 (I & II)",
+        "genres": ["Nhập vai", "Hành động", "Account OFFLINE"],
+        "price": "39.000",
+        "image": "images/hades-2-1-1000x563.jpg",
+        "isHot": false
+    },   
+    {
+        "name": "TopSpin 2K25 Grand Slam Edition + Full DLC",
+        "genres": ["Nhập vai", "Hành động", "Cốt truyện", "Account OFFLINE"],
+        "price": "79.000",
+        "image": "images/topskin2k25.jpg",
+        "isHot": false
+    },
+    {
+        "name": "Card Shop Simulator Multiplayer",
+        "genres": ["Mô phỏng", "Account OFFLINE"],
+        "price": "19.000",
+        "image": "images/Card-Shop-Simulator-Multiplayer-1000x563.jpg",
+        "isHot": false
+    },
+    {
+        "name": "Taxi Life: A City Driving Simulator",
+        "genres": ["Mô phỏng", "Account OFFLINE"],
+        "price": "39.000",
+        "image": "images/Taxi-Life-A-City-Driving-Simulator-1000x563.jpg",
+        "isHot": false
+    },
+    {
+        "name": "Recycling Center Simulator",
+        "genres": ["Mô phỏng", "Account OFFLINE"],
+        "price": "29.000",
+        "image": "images/Recycling-Center-Simulator-1000x563.jpg",
+        "isHot": false
+    },    
+    {
+        "name": "The Crew 2 + Mail (Ubisoft)",
+        "genres": ["Mô phỏng","Đua xe", "Account OFFLINE"],
+        "price": "59.000",
+        "image": "images/thecrew2.jpg",
+        "isHot": false
+    },   
+    {
+        "name": "Mafia: The Old Country",
+        "genres": ["Nhập vai", "Hành động", "Cốt truyện", "Account OFFLINE"],
+        "price": "59.000",
         "image": "images/mafia-the-old-country-key-art.jpg",
         "isHot": true
     },
     {
         "name": "Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles 2",
         "genres": ["Game anime", "Hành động", "Nhập Vai", "Account OFFLINE"],
-        "price": "79.000",
+        "price": "59.000",
         "image": "images/demonslayer2.jpg",
         "isHot": true
     },
     {
-        "name": "Grounded 2",
+        "name": "Grounded 2 + Mail",
         "genres": ["Sinh tồn", "Game CO-OP", "Phiêu lưu", "Account ONLINE"],
-        "price": "39.000",
+        "price": "339.000",
         "image": "images/grounded2.jpg",
         "isHot": true
     },
@@ -67,13 +144,6 @@ const games = [
         "genres": ["Hành động", "Mô phỏng", "Account OFFLINE"],
         "price": "19.000",
         "image": "images/PrisonEscapeSimulator.jpg",
-        "isHot": false
-    },
-    {
-        "name": "[Pre-Order] METAL GEAR SOLID Δ: SNAKE EATER Digital Deluxe",
-        "genres": ["Hành động", "Phiêu lưu", "Account OFFLINE"],
-        "price": "99.000",
-        "image": "images/METALGEARSOLIDΔ.jpg",
         "isHot": false
     },
     {
