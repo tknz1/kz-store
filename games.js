@@ -9,7 +9,7 @@ const games = [
     {
         "name": "Lost Soul Aside Deluxe Edition",
         "genres": ["Nhập vai", "Hành động", "Cốt truyện", "Account OFFLINE"],
-        "price": "69.000",
+        "price": "59.000",
         "image": "images/lost-soul-aside-deluxe-edition.jpg",
         "isHot": true
     },
