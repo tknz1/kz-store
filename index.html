@@ -71,10 +71,9 @@
             </div>
         </section>
         
-        <!-- vùng chứa bộ lọc và danh sách nội dung -->
         <div class="content-grid">
             <div class="filters" id="gameFilters">
-                <!-- ô tìm kiếm trống để giữ nguyên cấu trúc css -->
+
                 <div class="filter-group search-group" style="display:none;"></div>
 
                 <div class="filter-group price-group">
@@ -101,7 +100,7 @@
                     <div class="filter-options">
                         <label><input type="checkbox" class="filter-checkbox genre-filter" value="hot" onchange="applyFilters()"> Game Hot</label>
                         <label><input type="checkbox" class="filter-checkbox genre-filter" value="Hành động" onchange="applyFilters()"> Hành động</label>
-                        <label><input type="checkbox" class="filter-checkbox genre-filter" value="Nhập vai" onchange="applyFilters()"> Nhập vai</label>
+                        <label><input type="checkbox" class="filter-checkbox genre-filter" value="Game việt hóa" onchange="applyFilters()"> Game việt hóa</label>
                         <label><input type="checkbox" class="filter-checkbox genre-filter" value="Chiến thuật" onchange="applyFilters()"> Chiến thuật</label>
                         <label><input type="checkbox" class="filter-checkbox genre-filter" value="Thể thao" onchange="applyFilters()"> Thể thao</label>
                         <label><input type="checkbox" class="filter-checkbox genre-filter" value="Phiêu lưu" onchange="applyFilters()"> Phiêu lưu</label>
@@ -128,7 +127,6 @@
 
         <div class="updating-message">ĐANG CẬP NHẬT...</div>
 
-        <!-- lớp phủ cho drawer trên di động -->
         <div id="menuOverlay" class="menu-overlay"></div>
         <div id="filterOverlay" class="filter-overlay"></div>
     </div>
@@ -139,13 +137,13 @@
     <script src="spotify.js?v=1"></script>
     <script src="main.js?v=2"></script>
 
-    <!-- <div class="popup-overlay" id="popupOverlay">
+    <div class="popup-overlay" id="popupOverlay">
         <div class="popup-content">
             <span class="popup-close" onclick="closePopup()">×</span>
             <h2>NOTE</h2>
             <p id="popupMessage"></p>
         </div>
-    </div> -->
+    </div>
     <div class="scroll-to-top" id="scrollToTop" onclick="scrollToTop()">
         ↑
     </div>

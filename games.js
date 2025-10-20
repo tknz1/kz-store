@@ -1,5 +1,179 @@
 const games = [
     {
+    "name": "EA SPORTS FC 26 Ultimate Edition",
+    "genres": ["Thể thao", "Mô phỏng", "Game CO-OP", "Account OFFLINE"],
+    "price": "79.000",
+    "image": "images/ea-sports-fc-26-ultimate-edition.jpg",
+    "isHot": true
+    },
+
+    {
+    "name": "No, I’m not a Human + Full DLC + Việt Hóa",
+    "genres": ["Phiêu lưu", "Cốt truyện", "Game anime", "Game việt hóa", "Account OFFLINE"],
+    "price": "39.000",
+    "image": "images/no-im-not-a-human.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Grounded",
+    "genres": ["Sinh tồn", "Phiêu lưu", "Game CO-OP", "Hành động", "Account OFFLINE"],
+    "price": "29.000",
+    "image": "images/grounded.jpg",
+    "isHot": false
+    },
+    {
+    "name": "Grounded Online Xbox",
+    "genres": ["Sinh tồn", "Phiêu lưu", "Game CO-OP", "Hành động", "Account ONLINE"],
+    "price": "69.000",
+    "image": "images/grounded.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Dying Light: The Beast Deluxe Edition + Việt Hóa",
+    "genres": ["Hành động", "Sinh tồn", "Phiêu lưu", "Game việt hóa", "Account OFFLINE"],
+    "price": "59.000",
+    "image": "images/dying-light-the-beast-deluxe-edition.jpg",
+    "isHot": true
+    },
+
+    {
+    "name": "Alan Wake 2",
+    "genres": ["Kinh dị", "Cốt truyện", "Phiêu lưu", "Hành động", "Account OFFLINE"],
+    "price": "59.000",
+    "image": "images/alan-wake-2.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Borderlands 4 + Việt Hóa",
+    "genres": ["Hành động", "Bắn súng", "Game CO-OP", "Phiêu lưu", "Game việt hóa", "Account OFFLINE"],
+    "price": "69.000",
+    "image": "images/borderlands-4.jpg",
+    "isHot": true
+    },
+
+    {
+    "name": "theHunter: Call of the Wild",
+    "genres": ["Mô phỏng", "Sinh tồn", "Phiêu lưu", "Account OFFLINE"],
+    "price": "39.000",
+    "image": "images/thehunter-call-of-the-wild.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "The Walking Dead: The Telltale Definitive Series",
+    "genres": ["Phiêu lưu", "Cốt truyện", "Kinh dị", "Account OFFLINE"],
+    "price": "29.000",
+    "image": "images/the-walking-dead-the-telltale-definitive-series.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Combo Game Resident Evil 1-8 Remake",
+    "genres": ["Kinh dị", "Hành động", "Sinh tồn", "Cốt truyện", "Account OFFLINE"],
+    "price": "119.000",
+    "image": "images/resident-evil-1-8-remake.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Avatar: Frontiers of Pandora Ultimate Edition",
+    "genres": ["Hành động", "Phiêu lưu", "Cốt truyện", "Game CO-OP", "Account OFFLINE"],
+    "price": "49.000",
+    "image": "images/avatar-frontiers-of-pandora-ultimate-edition.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "SONIC X SHADOW GENERATIONS Deluxe Edition",
+    "genres": ["Phiêu lưu", "Hành động", "Game anime", "Account OFFLINE"],
+    "price": "49.000",
+    "image": "images/sonic-x-shadow-generations-deluxe-edition.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Red Dead Redemption 1 + Việt Hóa",
+    "genres": ["Hành động", "Phiêu lưu", "Cốt truyện", "Game việt hóa", "Account OFFLINE"],
+    "price": "29.000",
+    "image": "images/red-dead-redemption-1.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Borderlands 4 Super Deluxe Edition + Full DLC",
+    "genres": ["Hành động", "Bắn súng", "Game CO-OP", "Phiêu lưu", "Account OFFLINE"],
+    "price": "79.000",
+    "image": "images/borderlands-4-super-deluxe-edition.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Little Nightmares III Deluxe Edition + Full DLC",
+    "genres": ["Phiêu lưu", "Kinh dị", "Cốt truyện", "Giải đố", "Account OFFLINE"],
+    "price": "49.000",
+    "image": "images/little-nightmares-iii-deluxe-edition.jpg",
+    "isHot": true
+    },
+
+    {
+    "name": "Batman: Arkham Knight",
+    "genres": ["Hành động", "Phiêu lưu", "Cốt truyện", "Account OFFLINE"],
+    "price": "39.000",
+    "image": "images/batman-arkham-knight.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Football Manager 2026",
+    "genres": ["Thể thao", "Chiến thuật", "Mô phỏng", "Account OFFLINE"],
+    "price": "69.000",
+    "image": "images/football-manager-2026.jpg",
+    "isHot": true
+    },
+
+    {
+    "name": "Tiny Glade",
+    "genres": ["Mô phỏng", "Giải đố", "Phiêu lưu", "Account OFFLINE"],
+    "price": "29.000",
+    "image": "images/tiny-glade.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "House Flipper 1+2",
+    "genres": ["Mô phỏng", "Phiêu lưu", "Account OFFLINE"],
+    "price": "49.000",
+    "image": "images/house-flipper-1-2.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Disco Elysium The Final Cut + Việt Hóa",
+    "genres": ["Cốt truyện","Game việt hóa", "Phiêu lưu", "Account OFFLINE"],
+    "price": "39.000",
+    "image": "images/disco-elysium-the-final-cut.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "Murders on the Yangtze River",
+    "genres": ["Phiêu lưu", "Cốt truyện", "Giải đố", "Account OFFLINE"],
+    "price": "29.000",
+    "image": "images/murders-on-the-yangtze-river.jpg",
+    "isHot": false
+    },
+
+    {
+    "name": "NBA 2K26",
+    "genres": ["Thể thao", "Mô phỏng", "Game CO-OP", "Account OFFLINE"],
+    "price": "69.000",
+    "image": "images/nba-2k26.jpg",
+    "isHot": false
+    },
+    {
         "name": "METAL GEAR SOLID Δ: SNAKE EATER Digital Deluxe",
         "genres": ["Hành động", "Phiêu lưu", "Account OFFLINE"],
         "price": "69.000",
@@ -8,7 +182,7 @@ const games = [
     },         
     {
         "name": "Lost Soul Aside Deluxe Edition",
-        "genres": ["Nhập vai", "Hành động", "Cốt truyện", "Account OFFLINE"],
+        "genres": [ "Hành động", "Cốt truyện", "Account OFFLINE"],
         "price": "59.000",
         "image": "images/lost-soul-aside-deluxe-edition.jpg",
         "isHot": true
@@ -16,34 +190,34 @@ const games = [
     {
         "name": "SILENT HILL f Deluxe Edition",
         "genres": ["Kinh dị", "Sinh tồn", "Phiêu lưu", "Account OFFLINE"],
-        "price": "59.000",
+        "price": "49.000",
         "image": "images/SILENT-HILL-f.jpg",
         "isHot": false
     },
     {
         "name": "DARK SOULS III Full DLC",
-        "genres": ["Nhập vai", "Hành động", "Account OFFLINE"],
+        "genres": [ "Hành động", "Account OFFLINE"],
         "price": "49.000",
         "image": "images/DARK-SOULS-III-Deluxe-Edition-1000x563.jpg",
         "isHot": false
     },
     {
         "name": "DARK SOULS II: Scholar of the First Sin",
-        "genres": ["Nhập vai", "Hành động", "Account OFFLINE"],
+        "genres": [ "Hành động", "Account OFFLINE"],
         "price": "39.000",
         "image": "images/DARK-SOULS-II-Scholar-of-the-First-Sin-1000x563.jpg",
         "isHot": false
     },
     {
         "name": "Hades 1 + 2 (I & II)",
-        "genres": ["Nhập vai", "Hành động", "Account OFFLINE"],
+        "genres": [ "Hành động", "Account OFFLINE"],
         "price": "39.000",
         "image": "images/hades-2-1-1000x563.jpg",
         "isHot": false
     },   
     {
         "name": "TopSpin 2K25 Grand Slam Edition + Full DLC",
-        "genres": ["Nhập vai", "Hành động", "Cốt truyện", "Account OFFLINE"],
+        "genres": [ "Hành động", "Cốt truyện", "Account OFFLINE"],
         "price": "79.000",
         "image": "images/topskin2k25.jpg",
         "isHot": false
@@ -78,14 +252,14 @@ const games = [
     },   
     {
         "name": "Mafia: The Old Country",
-        "genres": ["Nhập vai", "Hành động", "Cốt truyện", "Account OFFLINE"],
+        "genres": [ "Hành động", "Cốt truyện", "Account OFFLINE"],
         "price": "59.000",
         "image": "images/mafia-the-old-country-key-art.jpg",
         "isHot": true
     },
     {
         "name": "Demon Slayer -Kimetsu no Yaiba- The Hinokami Chronicles 2",
-        "genres": ["Game anime", "Hành động", "Nhập Vai", "Account OFFLINE"],
+        "genres": ["Game anime", "Hành động",  "Account OFFLINE"],
         "price": "59.000",
         "image": "images/demonslayer2.jpg",
         "isHot": true
@@ -106,7 +280,7 @@ const games = [
     },
     {
         "name": "Titan Quest 2",
-        "genres": ["Hành động", "Nhập Vai", "Phiêu lưu", "Account OFFLINE"],
+        "genres": ["Hành động",  "Phiêu lưu", "Account OFFLINE"],
         "price": "29.000",
         "image": "images/titanquest2.jpg",
         "isHot": false
@@ -204,7 +378,7 @@ const games = [
     },
     {
         name: "Wo Long: Fallen Dynasty Complete Edition",
-        "genres": ["Hành động", "Nhập Vai", "Account OFFLINE"],
+        "genres": ["Hành động",  "Account OFFLINE"],
         price: "49.000",
         image: "images/wolong.jpg",
         isHot: false
@@ -225,7 +399,7 @@ const games = [
     },
     {
         name: "Tale of Immortal",
-        "genres": ["Hành động", "Nhập Vai", "Mô phỏng", "Account OFFLINE"],
+        "genres": ["Hành động",  "Mô phỏng", "Account OFFLINE"],
         price: "29.000",
         image: "images/taleofimmortal.jpg",
         isHot: false
@@ -281,14 +455,14 @@ const games = [
     },
     {
         "name": "Wuchang: Fallen Feathers",
-        "genres": ["Nhập vai", "Hành động", "Phiêu lưu", "Cốt truyện", "Account OFFLINE"],
+        "genres": [ "Hành động", "Phiêu lưu", "Cốt truyện", "Account OFFLINE"],
         "price": "49.000",
         "image": "images/wuchang.jpg",
         "isHot": true
     },
         {
         "name": "Elden Ring Nightreign Deluxe Edition",
-        "genres": ["Nhập vai", "Hành động", "Phiêu lưu", "Cốt truyện", "Account OFFLINE"],
+        "genres": [ "Hành động", "Phiêu lưu", "Cốt truyện", "Account OFFLINE"],
         "price": "49.000",
         "image": "images/eldenring_nightreign.jpg",
         "isHot": true
@@ -330,7 +504,7 @@ const games = [
     },
     {
         "name": "Lies of P + DLC Overture",
-        "genres": ["Hành động", "Nhập vai", "Cốt truyện", "Account OFFLINE"],
+        "genres": ["Hành động",  "Cốt truyện", "Account OFFLINE"],
         "price": "49.000",
         "image": "images/liesofp_dlc.jpg",
         "isHot": true
@@ -512,14 +686,14 @@ const games = [
     },
     {
         "name": "V Rising",
-        "genres": ["Sinh tồn", "Nhập vai", "Hành động", "Account OFFLINE"],
+        "genres": ["Sinh tồn",  "Hành động", "Account OFFLINE"],
         "price": "39.000",
         "image": "images/vrising.jpg",
         "isHot": false
     },
     {
         "name": "Red Dead Redemption 1",
-        "genres": ["Hành động", "Phiêu lưu", "Nhập vai", "Cốt truyện", "Account OFFLINE"],
+        "genres": ["Hành động", "Phiêu lưu",  "Cốt truyện", "Account OFFLINE"],
         "price": "39.000",
         "image": "images/reddeadredemption1.jpg",
         "isHot": false
@@ -554,42 +728,42 @@ const games = [
     },
     {
         "name": "Yakuza 0",
-        "genres": ["Hành động", "Nhập vai", "Cốt truyện", "Account OFFLINE"],
+        "genres": ["Hành động",  "Cốt truyện", "Account OFFLINE"],
         "price": "39.000",
         "image": "images/yakuza0.jpg",
         "isHot": false
     },
     {
         name: "The Elder Scrolls IV: Oblivion Remastered",
-        genres: ["Nhập Vai","Cốt truyện", "Account OFFLINE"],
+        genres: ["Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/theelderscrollsiv.jpg",
         isHot: false
     },
     {
         name: "Clair Obscur Expedition 33 Deluxe Edition",
-        genres: ["Hành động", "Nhập Vai", "Account OFFLINE"],
+        genres: ["Hành động",  "Account OFFLINE"],
         price: "49.000",
         image: "images/clairobscur.jpg",
         isHot: true
     },
     {
         name: "The First Berserker: Khazan",
-        genres: ["Hành động", "Nhập vai","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành động", "Cốt truyện", "Account OFFLINE"],
         price: "59.000",
         image: "images/thefirstberserkerkhazan.jpg",
         isHot: true
     },
     {
         name: "Black Myth: Wukong",
-        genres: ["Hành động", "Nhập vai", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành động",  "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/blackmythwukong.jpg",
         isHot: true
     },
     {
         name: "Black Myth: Wukong + Mail",
-        genres: ["Hành động", "Nhập vai", "Phiêu lưu","Cốt truyện", "Account ONLINE"],
+        genres: ["Hành động",  "Phiêu lưu","Cốt truyện", "Account ONLINE"],
         price: "399.000",
         image: "images/blackmythwukong.jpg",
         isHot: true
@@ -624,21 +798,21 @@ const games = [
     },
     {
         name: "Grand Theft Auto V (GTA V)",
-        genres: ["Hành động", "Phiêu lưu","Nhập vai","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành động", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
         price: "39.000",
         image: "images/gtav.jpg",
         isHot: true
     },
     {
         name: "Grand Theft Auto V (GTA V) New + Mail Gốc",
-        genres: ["Hành động", "Phiêu lưu","Nhập vai","Cốt truyện", "Account ONLINE"],
+        genres: ["Hành động", "Phiêu lưu","Cốt truyện", "Account ONLINE"],
         price: "319.000",
         image: "images/gtav.jpg",
         isHot: true
     },
     {
         name: "Red Dead Redemption 2",
-        genres: ["Hành động", "Phiêu lưu", "Nhập vai","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành động", "Phiêu lưu", "Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/reddead2.jpg",
         isHot: true
@@ -652,7 +826,7 @@ const games = [
     },
     {
         name: "Hogwarts Legacy",
-        genres: ["Nhập vai", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
+        genres: [ "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/hogwartslegacy.jpg",
         isHot: false
@@ -660,14 +834,14 @@ const games = [
 
     {
         name: "Elden Ring + Mail",
-        genres: ["Nhập vai", "Hành động", "Phiêu lưu","Cốt truyện", "Account ONLINE"],
+        genres: [ "Hành động", "Phiêu lưu","Cốt truyện", "Account ONLINE"],
         price: "399.000",
         image: "images/eldenring.jpg",
         isHot: true
     },
     {
         name: "Elden Ring + DLC",
-        genres: ["Nhập vai", "Hành động", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
+        genres: [ "Hành động", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/eldenringshadow.jpg",
         isHot: true
@@ -688,14 +862,14 @@ const games = [
     },
     {
         name: "God of War",
-        genres: ["Hành động", "Phiêu lưu", "Nhập vai","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành động", "Phiêu lưu", "Cốt truyện", "Account OFFLINE"],
         price: "39.000",
         image: "images/godofwar2018.jpg",
         isHot: false
     },
     {
         name: "God of War Ragnarök",
-        genres: ["Hành động", "Phiêu lưu", "Nhập vai","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành động", "Phiêu lưu", "Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/godofwarragnarok.jpg",
         isHot: true
@@ -709,14 +883,14 @@ const games = [
     },
     {
         name: "Cyberpunk 2077",
-        genres: ["Nhập vai", "Hành động", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
+        genres: [ "Hành động", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
         price: "39.000",
         image: "images/cyberpunk2077.jpg",
         isHot: false
     },
     {
         name: "Cyberpunk 2077 + DLC Phantom Liberty",
-        genres: ["Nhập vai", "Hành động", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
+        genres: [ "Hành động", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/cyberpunk2077dlc.jpg",
         isHot: true
@@ -744,7 +918,7 @@ const games = [
     },
     {
         name: "Monster Hunter Wilds Deluxe Edtiton",
-        genres: ["Hành động", "Nhập vai","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành động", "Cốt truyện", "Account OFFLINE"],
         price: "59.000",
         image: "images/monsterhunterwild.jpg",
         isHot: true
@@ -758,24 +932,24 @@ const games = [
     },
     {
         name: "FINAL FANTASY XVI COMPLETE EDITION",
-        genres: ["Nhập vai", "Hành động","Cốt truyện", "Account OFFLINE"],
+        genres: [ "Hành động","Cốt truyện", "Account OFFLINE"],
         price: "69.000",
         image: "images/finalfantasy16.jpg",
         isHot: false
     },
     {
-        name: "Horizon Forbidden West",
-        genres: ["Nhập vai", "Phiêu lưu", "Hành động","Cốt truyện", "Account OFFLINE"],
-        price: "39.000",
+        name: "Horizon Forbidden West Complete Edition",
+        genres: [ "Phiêu lưu", "Hành động","Cốt truyện", "Account OFFLINE"],
+        price: "59.000",
         image: "images/horizonforbiddenwest.jpg",
-        isHot: false
+        isHot: true
     },
     {
         name: "Horizon Zero Dawn Complete Edition",
-        genres: ["Nhập vai", "Phiêu lưu", "Hành động","Cốt truyện", "Account OFFLINE"],
-        price: "59.000",
+        genres: [ "Phiêu lưu", "Hành động","Cốt truyện", "Account OFFLINE"],
+        price: "39.000",
         image: "images/horizonzerodawn.jpg",
-        isHot: true
+        isHot: false
     },
     {
         name: "Dragon Ball: Sparking! ZERO",
@@ -786,7 +960,7 @@ const games = [
     },
     {
         name: "Dragon Ball Z: Kakarot",
-        genres: ["Võ thuật", "Nhập vai", "Account OFFLINE"],
+        genres: ["Võ thuật",  "Account OFFLINE"],
         price: "39.000",
         image: "images/dragonballkakarot.jpg",
         isHot: false
@@ -807,7 +981,7 @@ const games = [
     },
     {
         name: "Metaphor: ReFantazio Atlus 35th Digital Anniversary Edition",
-        genres: ["Nhập vai", "Phiêu lưu","Game anime", "Account OFFLINE"],
+        genres: [ "Phiêu lưu","Game anime", "Account OFFLINE"],
         price: "69.000",
         image: "images/metaphor.jpg",
         isHot: false
@@ -821,21 +995,21 @@ const games = [
     },
     {
         name: "Kingdom Come: Deliverance",
-        genres: ["Nhập vai", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
+        genres: [ "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
         price: "39.000",
         image: "images/kingdomcome.jpg",
         isHot: false
     },
     {
         name: "Kingdom Come: Deliverance II",
-        genres: ["Nhập vai", "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
+        genres: [ "Phiêu lưu","Cốt truyện", "Account OFFLINE"],
         price: "59.000",
         image: "images/kingdomcome2.jpg",
         isHot: true
     },
     {
         name: "Persona 3 Reload Digital Premium Edition",
-        genres: ["Nhập vai", "Phiêu lưu", "Account OFFLINE"],
+        genres: [ "Phiêu lưu", "Account OFFLINE"],
         price: "59.000",
         image: "images/persona3reload.jpg",
         isHot: false
@@ -849,7 +1023,7 @@ const games = [
     },
     {
         name: "The Witcher 3: Wild Hunt",
-        genres: ["Nhập vai", "Phiêu lưu", "Hành động","Cốt truyện", "Account OFFLINE"],
+        genres: [ "Phiêu lưu", "Hành động","Cốt truyện", "Account OFFLINE"],
         price: "39.000",
         image: "images/witcher3.jpg",
         isHot: false
@@ -898,7 +1072,7 @@ const games = [
     },
     {
         name: "NieR: Automata",
-        genres: ["Hành động", "Nhập vai", "Account OFFLINE"],
+        genres: ["Hành động",  "Account OFFLINE"],
         price: "49.000",
         image: "images/nierautomata.jpg",
         isHot: false
@@ -911,7 +1085,7 @@ const games = [
         isHot: true
     },
     {
-        name: "Resident Evil 4 Remake",
+        name: "Resident Evil 4 Remake + DLC",
         genres: ["Kinh dị", "Hành động","Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/residentevil4.jpg",
@@ -933,7 +1107,7 @@ const games = [
     },
     {
         name: "S.T.A.L.K.E.R. 2: Heart of Chornobyl",
-        genres: ["Hành động", "Kinh dị", "Nhập vai", "Account OFFLINE"],
+        genres: ["Hành động", "Kinh dị",  "Account OFFLINE"],
         price: "59.000",
         image: "images/stalker2.jpg",
         isHot: false
@@ -968,77 +1142,77 @@ const games = [
     },
     {
         name: "Assassin's Creed Black Flag",
-        genres: ["Hành Động","Phiêu Lưu","Nhập Vai","Sát thủ","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành Động","Phiêu Lưu","Sát thủ","Cốt truyện", "Account OFFLINE"],
         price: "29.000",
         image: "images/acblackflag.jpg",
         isHot: false
     },
     {
         name: "Assassin's Creed Unity Ubisoft Online",
-        genres: ["Hành Động","Phiêu Lưu","Nhập Vai","Sát thủ","Cốt truyện", "Account ONLINE"],
+        genres: ["Hành Động","Phiêu Lưu","Sát thủ","Cốt truyện", "Account ONLINE"],
         price: "29.000",
         image: "images/acunity.jpg",
         isHot: false
     },
     {
         name: "Assassin's Creed Unity Offline + DLC",
-        genres: ["Hành Động","Phiêu Lưu","Nhập Vai","Sát thủ","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành Động","Phiêu Lưu","Sát thủ","Cốt truyện", "Account OFFLINE"],
         price: "29.000",
         image: "images/acunity.jpg",
         isHot: false
     },
     {
         name: "Assassin's Creed Syndicate + Mail",
-        genres: ["Hành Động","Phiêu Lưu","Nhập Vai","Sát thủ","Cốt truyện", "Account ONLINE"],
+        genres: ["Hành Động","Phiêu Lưu","Sát thủ","Cốt truyện", "Account ONLINE"],
         price: "49.000",
         image: "images/acsyndicate.jpg",
         isHot: false
     },
     {
         name: "Assassin's Creed Syndicate Offline",
-        genres: ["Hành Động","Phiêu Lưu","Nhập Vai","Sát thủ","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành Động","Phiêu Lưu","Sát thủ","Cốt truyện", "Account OFFLINE"],
         price: "29.000",
         image: "images/acsyndicate.jpg",
         isHot: false
     },
     {
         name: "Assassin's Creed Origins + Mail",
-        genres: ["Hành Động","Phiêu Lưu","Nhập Vai","Sát thủ","Cốt truyện", "Account ONLINE"],
+        genres: ["Hành Động","Phiêu Lưu","Sát thủ","Cốt truyện", "Account ONLINE"],
         price: "69.000",
         image: "images/acorgins.jpg",
         isHot: false
     },
     {
         name: "Assassin's Creed Odyssey",
-        genres: ["Hành Động","Phiêu Lưu","Nhập Vai","Sát thủ","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành Động","Phiêu Lưu","Sát thủ","Cốt truyện", "Account OFFLINE"],
         price: "39.000",
         image: "images/acoddysey.jpg",
         isHot: false
     },
     {
         name: "Assassin's Creed Valhalla Complete Edition",
-        genres: ["Hành Động","Phiêu Lưu","Nhập Vai","Sát thủ","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành Động","Phiêu Lưu","Sát thủ","Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/acvalhalla.jpg",
         isHot: false
     },
     {
         name: "Assassin's Creed Mirage",
-        genres: ["Hành Động","Phiêu Lưu","Nhập Vai","Sát thủ","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành Động","Phiêu Lưu","Sát thủ","Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/acmirage.jpg",
         isHot: false
     },
     {
         name: "Assassin's Creed Shadows",
-        genres: ["Hành động", "Phiêu lưu","Nhập Vai","Sát thủ","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành động", "Phiêu lưu","Sát thủ","Cốt truyện", "Account OFFLINE"],
         price: "59.000",
         image: "images/assassinscreedshadow.jpg",
         isHot: true
     },
     {
         name: "Rise of the Ronin",
-        genres: ["Hành động", "Nhập vai","Cốt truyện", "Account OFFLINE"],
+        genres: ["Hành động", "Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/riseoftheronin.jpg",
         isHot: false
@@ -1059,7 +1233,7 @@ const games = [
     },
     {
         name: "Like a Dragon: Infinite Wealth",
-        genres: ["Hành động", "Nhập vai", "Account OFFLINE"],
+        genres: ["Hành động",  "Account OFFLINE"],
         price: "49.000",
         image: "images/yakuza_likeadragon.jpg",
         isHot: false
@@ -1073,7 +1247,7 @@ const games = [
     },
     {
         name: "Final Fantasy VII Rebirth",
-        genres: ["Nhập vai", "Hành động","Cốt truyện", "Account OFFLINE"],
+        genres: [ "Hành động","Cốt truyện", "Account OFFLINE"],
         price: "49.000",
         image: "images/finalfantasy7.jpg",
         isHot: true
@@ -1087,7 +1261,7 @@ const games = [
     },
     {
         name: "Baldur's Gate 3",
-        genres: ["Nhập vai", "Chiến thuật", "Account OFFLINE"],
+        genres: [ "Chiến thuật", "Account OFFLINE"],
         price: "49.000",
         image: "images/baldursgate3.jpg",
         isHot: false
@@ -1158,7 +1332,7 @@ const games = [
     },
     {
         name: "Crusader Kings III",
-        genres: ["Mô Phỏng", "Nhập Vai","Chiến Thuật", "Account OFFLINE"],
+        genres: ["Mô Phỏng", "Chiến Thuật", "Account OFFLINE"],
         price: "39.000",
         image: "images/CrusaderKingsIII.jpg",
         isHot: false
@@ -1298,7 +1472,7 @@ const games = [
     },
     {
         name: "Mafia 1 + 2 + 3",
-        genres: ["Nhập vai","Phiêu lưu","Hành động","Cốt truyện", "Account OFFLINE"],
+        genres: ["Phiêu lưu","Hành động","Cốt truyện", "Account OFFLINE"],
         price: "69.000",
         image: "images/mafia.jpg",
         isHot: false
@@ -1445,7 +1619,7 @@ const games = [
     },
     {
         name: "Path of Exile 2 + Mail" ,
-        genres: ["Hành Động",'Phiêu Lưu',"Nhập vai", "Account ONLINE"],
+        genres: ["Hành Động",'Phiêu Lưu', "Account ONLINE"],
         price: "449.000",
         image: "images/poe2.jpg",
         isHot: false
