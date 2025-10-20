@@ -513,10 +513,10 @@ function initHeroSection() {
     const verticalList = document.getElementById('verticalList');
 
     const featuredSlides = [
-        { title: 'EA SPORTS FC™ 26',      description: 'Tự do tạo lối chơi, dẫn dắt câu lạc bộ của bạn — hơn 20.000 cầu thủ, 750+ đội tuyển, trải nghiệm hoàn toàn mới. The club is yours.',image: 'images/hero1.png' },
-        { title: 'Dying Light: The Beast',        description: 'Hóa thân thành Kyle Crane — người một phần zombie, một phần người. Leo trên mái nhà, phá tan xác sống, quật ngã chính mình… và trở thành quái vật',   image: 'images/hero2.png' },
-        { title: 'Little Nightmares III',       description: 'Cơn ác mộng mới bắt đầu — cùng nhau thoát khỏi thế giới méo mó và đáng sợ trong Little Nightmares III',  image: 'images/hero3.png' },
-        { title: 'Black Myth: Wukong',        description: 'Phiêu lưu hành động thần thoại, hóa thân Tề Thiên Đại Thánh.',   image: 'images/hero4.png' }
+        { title: 'EA SPORTS FC™ 26',description: 'Tự do tạo lối chơi, dẫn dắt câu lạc bộ của bạn — hơn 20.000 cầu thủ, 750+ đội tuyển, trải nghiệm hoàn toàn mới. The club is yours.',image: 'images/hero5.png' },
+        { title: 'Dying Light: The Beast',description: 'Hóa thân thành Kyle Crane — người một phần zombie, một phần người. Leo trên mái nhà, phá tan xác sống, quật ngã chính mình… và trở thành quái vật',   image: 'images/hero6.png' },
+        { title: 'Little Nightmares III',description: 'Cơn ác mộng mới bắt đầu — cùng nhau thoát khỏi thế giới méo mó và đáng sợ trong Little Nightmares III',  image: 'images/hero7.png' },
+        { title: 'Black Myth: Wukong',description: 'Phiêu lưu hành động thần thoại, hóa thân Tề Thiên Đại Thánh.',   image: 'images/hero4.png' }
     ];
 
     // Build the slide elements
